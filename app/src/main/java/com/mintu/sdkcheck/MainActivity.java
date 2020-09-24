@@ -1,20 +1,26 @@
 package com.mintu.sdkcheck;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import java.util.HashMap;
-import java.util.Map;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button locationDelhi,locationDhanbad,locationKolkata,locationGurgaon,locationKanpur,
-                   locationMumbai,locationRanchi,locationNoida,locationGreaterNoida,locationBokaro;
+    private static final int[] BUTTON_IDS = {
+            R.id.location_delhi,
+            R.id.location_dhanbad,
+            R.id.location_kolkata,
+            R.id.location_gurgaon,
+            R.id.location_kanpur,
+            R.id.location_mumbai,
+            R.id.location_ranchi,
+            R.id.location_noida,
+            R.id.location_greater_noida,
+            R.id.location_bokaro
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,79 +30,63 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Initializing Views
         init();
 
-        //Setting click listener
-        setClick();
-
     }
 
     private void init() {
-        locationDelhi = (Button) findViewById(R.id.location_delhi);
-        locationDhanbad = (Button) findViewById(R.id.location_dhanbad);
-        locationKolkata = (Button) findViewById(R.id.location_kolkata);
-        locationGurgaon = (Button) findViewById(R.id.location_gurgaon);
-        locationKanpur = (Button) findViewById(R.id.location_kanpur);
-        locationMumbai = (Button) findViewById(R.id.location_mumbai);
-        locationRanchi = (Button) findViewById(R.id.location_ranchi);
-        locationNoida = (Button) findViewById(R.id.location_noida);
-        locationGreaterNoida = (Button) findViewById(R.id.location_greater_noida);
-        locationBokaro = (Button) findViewById(R.id.location_bokaro);
-    }
 
-    private void setClick() {
-        locationDelhi.setOnClickListener(this);
-        locationBokaro.setOnClickListener(this);
-        locationGreaterNoida.setOnClickListener(this);
-        locationNoida.setOnClickListener(this);
-        locationRanchi.setOnClickListener(this);
-        locationMumbai.setOnClickListener(this);
-        locationKanpur.setOnClickListener(this);
-        locationGurgaon.setOnClickListener(this);
-        locationKolkata.setOnClickListener(this);
-        locationDhanbad.setOnClickListener(this);
+        Button button[] = new Button[10];
+        for (int id : BUTTON_IDS )
+        {
+            for (int i=0;i<10;i++)
+            {
+                button[i] = (Button) findViewById(id);
+                button[i].setOnClickListener(this);
+            }
+        }
     }
 
     @Override
     public void onClick(View view) {
 
-        if (view == locationDelhi)
+        if (view.getId() == BUTTON_IDS[0])
         {
             SendToWeatherStatusActivity("delhi");
         }
-        else if ( view == locationDhanbad)
+        else if ( view.getId() == BUTTON_IDS[1])
         {
             SendToWeatherStatusActivity("dhanbad");
         }
-        else if ( view == locationBokaro)
-        {
-            SendToWeatherStatusActivity("bokaro");
-        }
-        else if ( view == locationGreaterNoida)
-        {
-            SendToWeatherStatusActivity("greater noida");
-        }
-        else if ( view == locationGurgaon)
-        {
-            SendToWeatherStatusActivity("gurgaon");
-        }
-        else if ( view == locationKanpur)
-        {
-            SendToWeatherStatusActivity("kanpur");
-        }
-        else if ( view == locationKolkata)
+        else if ( view.getId() == BUTTON_IDS[2])
         {
             SendToWeatherStatusActivity("kolkata");
         }
-        else if ( view == locationMumbai)
+        else if ( view.getId() == BUTTON_IDS[3])
+        {
+            SendToWeatherStatusActivity("gurgaon");
+        }
+        else if ( view.getId() == BUTTON_IDS[4])
+        {
+            SendToWeatherStatusActivity("kanpur");
+        }
+        else if ( view.getId() == BUTTON_IDS[5])
         {
             SendToWeatherStatusActivity("mumbai");
         }
-        else if ( view == locationNoida)
+        else if ( view.getId() == BUTTON_IDS[6])
+        {
+            SendToWeatherStatusActivity("ranchi");
+        }
+        else if ( view.getId() == BUTTON_IDS[7])
         {
             SendToWeatherStatusActivity("noida");
         }
-        else
+        else if ( view.getId() == BUTTON_IDS[8])
         {
-            SendToWeatherStatusActivity("ranchi");
+            SendToWeatherStatusActivity("greater noida");
+        }
+        else if ( view.getId() == BUTTON_IDS[9])
+        {
+            SendToWeatherStatusActivity("bokaro");
         }
 
     }
