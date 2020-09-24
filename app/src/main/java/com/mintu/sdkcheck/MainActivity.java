@@ -22,6 +22,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             R.id.location_bokaro
     };
 
+    private static final String[] LOCATIONS_NAME = {
+            "delhi",
+            "dhanbad",
+            "kolkata",
+            "gurgaon",
+            "kanpur",
+            "mumbai",
+            "ranchi",
+            "noida",
+            "greater noida",
+            "bokaro"
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,47 +61,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-        if (view.getId() == BUTTON_IDS[0])
+        for (int i = 0; i<10; i++)
         {
-            SendToWeatherStatusActivity("delhi");
+            if (view.getId() == BUTTON_IDS[i])
+            {
+                SendToWeatherStatusActivity(LOCATIONS_NAME[i]);
+            }
         }
-        else if ( view.getId() == BUTTON_IDS[1])
-        {
-            SendToWeatherStatusActivity("dhanbad");
-        }
-        else if ( view.getId() == BUTTON_IDS[2])
-        {
-            SendToWeatherStatusActivity("kolkata");
-        }
-        else if ( view.getId() == BUTTON_IDS[3])
-        {
-            SendToWeatherStatusActivity("gurgaon");
-        }
-        else if ( view.getId() == BUTTON_IDS[4])
-        {
-            SendToWeatherStatusActivity("kanpur");
-        }
-        else if ( view.getId() == BUTTON_IDS[5])
-        {
-            SendToWeatherStatusActivity("mumbai");
-        }
-        else if ( view.getId() == BUTTON_IDS[6])
-        {
-            SendToWeatherStatusActivity("ranchi");
-        }
-        else if ( view.getId() == BUTTON_IDS[7])
-        {
-            SendToWeatherStatusActivity("noida");
-        }
-        else if ( view.getId() == BUTTON_IDS[8])
-        {
-            SendToWeatherStatusActivity("greater noida");
-        }
-        else if ( view.getId() == BUTTON_IDS[9])
-        {
-            SendToWeatherStatusActivity("bokaro");
-        }
-
     }
 
     private void SendToWeatherStatusActivity(String city) {
